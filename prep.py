@@ -26,7 +26,7 @@ for l in nf:
 			warn()
 		print("doing preliminary work, you will be greeted with a terminal session after rebooting, run post.sh to undo these changes upon completion")
 		i = nf.index(l)
-		s = "GRUB_CMDLINE_LINUX_DEFAULT=\"intel_iommu=on text\""	# Replace it with our desired settings
+		s = "GRUB_CMDLINE_LINUX_DEFAULT=\"intel_iommu=on nomodeset\""	# Replace it with our desired settings
 		print(s)
 		nf[i] = s
 
