@@ -40,6 +40,7 @@ for l in nf:
 file.close()
 
 subprocess.run(["grub-mkconfig", "-o", "/boot/grub/grub.cfg"])
-
+# systemctl set-default multi-user.target
+subprocess.run(["systemctl", "set-default", "multi-user.target"])
 print("preliminary work completed. please restart your computer and re-run the script")
 quit(0)
