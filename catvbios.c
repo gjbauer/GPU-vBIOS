@@ -2,6 +2,7 @@
 #include <sys/stat.h>
 #include <sys/mman.h>
 #include <fcntl.h>
+#include <stdint.h>
 
 int main(int argc, char **argv)
 {
@@ -12,8 +13,10 @@ int main(int argc, char **argv)
     printf("%d\n", (size=stats.st_size));
     
     fd = open(argv[1], O_RDWR, 0644);
-    char *rom = mmap(0, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-    char ch;
-    for (int i=0; rom[i]; i++) printf("%X", (ch=rom[i]));
+    uint8_t *rom = mmap(0, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    uint8_t ch;
+    for (int i=0; rom[i]; i++) {
+    	printf("%X", (ch=rom[i]));
+    }
     return 0;
 }
